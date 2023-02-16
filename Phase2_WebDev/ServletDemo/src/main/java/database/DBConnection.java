@@ -19,12 +19,12 @@ public class DBConnection {
 			try {
 				//1. Load the driver
 				// this Driver class knows how to communicate with the DB
-				Class.forName("com.mysql.cj.jdbc.Driver");
+				Class.forName("org.h2.Driver");
 				System.out.println("Driver loaded");
 				// 2. location or IP address and port number
 				// MAC
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/voda2023", 
-						"root", "root");
+				conn = DriverManager.getConnection("jdbc:h2:mem:voda2023",
+						"", "");
 				// windows
 //				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/voda2023", 
 //						"root", "root");
