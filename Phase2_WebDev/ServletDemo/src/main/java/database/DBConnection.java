@@ -3,6 +3,7 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.h2.Driver;
 
 public class DBConnection {
 	
@@ -23,8 +24,8 @@ public class DBConnection {
 				System.out.println("Driver loaded");
 				// 2. location or IP address and port number
 				// MAC
-				conn = DriverManager.getConnection("jdbc:h2:mem:voda2023",
-						"", "");
+				conn = DriverManager.getConnection("jdbc:h2:mem:voda2023");
+
 				// windows
 //				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/voda2023", 
 //						"root", "root");
