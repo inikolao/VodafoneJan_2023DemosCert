@@ -7,11 +7,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import entity.Customer;
 
 public class CustomerDatabase {
 
+	public void inialiseDB() throws SQLException {
+		String sql = "create TABLE customer(email varchar(80) PRIMARY KEY, phone varchar(15),password varchar(50), city varchar(50), ismember tinyint);";
+		// 1. DB connection
+		Connection conn = DBConnection.dbConn();
+		//2. create the statememt
+		Statement stat = conn.createStatement();
+		// 3. execute the query
+		boolean rs = stat.execute(sql);
+		insertPeople(10);
+
+	}
 	// fetch all records -> select *
 	public List<Customer> getAllCustomers() throws SQLException
 	{
@@ -190,4 +202,35 @@ public class CustomerDatabase {
 		return isValid;
 	}
 
+	private boolean runQuery(String sql) throws SQLException {
+		// 1. DB connection
+		Connection conn = DBConnection.dbConn();
+		//2. create the statememt
+		Statement stat = conn.createStatement();
+		// 3. execute the query
+		return stat.execute(sql);
+	}
+	private void insertPeople(int numOf) throws SQLException {
+		try {
+			runQuery("INSERT INTO `customer` VALUES ('sh@g.c','1111111111','sh','Mum',0)");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		for (int i = 1; i < numOf; i++) {
+			insertCustomer(new Customer(GenRandomString(),GenRandomString(),GenRandomString(),GenRandomString(),false));
+		}
+	}
+
+	private String GenRandomString()
+	{
+		int leftLimit = 97; // letter 'a'
+		int rightLimit = 122; // letter 'z'
+		int targetStringLength = 10;
+		Random random = new Random();
+
+		return (random.ints(leftLimit, rightLimit + 1)
+				.limit(targetStringLength)
+				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+				.toString());
+	}
 }
