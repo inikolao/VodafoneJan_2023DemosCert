@@ -3,7 +3,6 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import org.h2.Driver;
 
 public class DBConnection {
 	
