@@ -9,7 +9,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,11 +17,10 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class AuthenticateFilter
  */
 @WebFilter( urlPatterns = {"/dashboard","/profile"})
-public class LoggingFilter extends HttpFilter implements Filter {
+public class LoggingFilter implements Filter {
        
     /**
-     * @see HttpFilter#HttpFilter()
-     */
+	 */
     public LoggingFilter() {
     	System.out.println("Logging Filter");
     }
