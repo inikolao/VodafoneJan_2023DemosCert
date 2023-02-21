@@ -17,10 +17,10 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class AuthenticateFilter
  */
-@WebFilter( urlPatterns = {"/dashboard","/profile"})
+@WebFilter(filterName = "log", urlPatterns = {"/dashboard","/profile"})
 public class LoggingFilter extends HttpFilter implements Filter {
        
-    /**
+    /**C
      * @see HttpFilter#HttpFilter()
      */
     public LoggingFilter() {
